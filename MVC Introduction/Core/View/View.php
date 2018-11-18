@@ -4,20 +4,18 @@ namespace Core\View;
 
 use \Core\View\ViewInterface;
 use \Model\UserRegisterFormModel;
-
+use \Core\Request\Request;
 
 class View implements ViewInterface
 {
-	private $controller_name;
-	private $action_name;
+	private $request;
 
-	public function __construct(string $controller_name, string $action_name){
-		$this->controller_name = $controller_name;
-		$this->action_name = $action_name;
+	public function __construct(Request $request){
+		$this->request = $request;
 	}
 
 	public function render($model = null){
-		include($_SERVER['DOCUMENT_ROOT'] . '/View/'.$this->controller_name . '/' . $this->action_name.'.php');
+		include($_SERVER['DOCUMENT_ROOT'] . '/View/'.$this->request->getControllerName() . '/' . $this->request->getActionName().'.php');
 	}
 }
 ?>

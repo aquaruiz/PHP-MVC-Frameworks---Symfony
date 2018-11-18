@@ -13,11 +13,9 @@ $controller_name = ucfirst(array_shift($url_parts));
 $action_name = array_shift($url_parts);
 $params = $url_parts;
 
-$view = new \Core\View\View($controller_name, $action_name);
-// echo '<pre>';
-// print_r($view);
-// echo '</pre>';
+$request = new \Core\Request\Request($controller_name, $action_name, $params);
+$view = new \Core\View\View($request);
 
-$app = new \Core\App\Application($controller_name, $action_name, $params); 
+$app = new \Core\App\Application($request); 
 $app->run($view);
 ?>

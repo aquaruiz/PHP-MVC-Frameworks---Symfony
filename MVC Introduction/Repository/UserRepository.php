@@ -2,13 +2,19 @@
 namespace Repository;
 
 use \Model\UserRegisterFormModel;
+use \PDO;
 
 class UserRepository
 {
+	private $db;
+
+	public function __construct(\PDO $db){
+		$this->db = $db;
+	}
+
 	public function insert(UserRegisterFormModel $user_model)
 	{
-		$db = new \PDO();
-		$db->prepare(
+		$this->db->prepare(
 			'INSERT INTO users (USER_NAME, PASSWORD) VALUES (:username, :password)';
 		);
 			//.....

@@ -25,11 +25,8 @@ class UsersController
 		$this->view->render();
 	}
 
-	public function registerSave(UserRegisterFormModel $user_model){
-		$user_service = new UserService();
+	public function registerSave(UserRegisterFormModel $user_model, UserService $user_service){
 		$user_service->register($user_model);
-
-		echo '>>'.$user->getUserName() . '->' . $user->getPassword();
 	}
 }
 ?>
