@@ -3,6 +3,8 @@
 namespace Core\View;
 
 use \Core\View\ViewInterface;
+use \Model\UserRegisterFormModel;
+
 
 class View implements ViewInterface
 {
@@ -14,7 +16,7 @@ class View implements ViewInterface
 		$this->action_name = $action_name;
 	}
 
-	public function render(){
+	public function render($model = null){
 		include($_SERVER['DOCUMENT_ROOT'] . '/View/'.$this->controller_name . '/' . $this->action_name.'.php');
 	}
 }

@@ -18,9 +18,6 @@ $view = new \Core\View\View($controller_name, $action_name);
 // print_r($view);
 // echo '</pre>';
 
-$controller_name = '\\Controller\\'.$controller_name.'Controller';
-
-$controller = new $controller_name($view);
-call_user_func_array([$controller, $action_name], $params);
-// $controller->$action_name();
+$app = new \Core\App\Application($controller_name, $action_name, $params); 
+$app->run($view);
 ?>

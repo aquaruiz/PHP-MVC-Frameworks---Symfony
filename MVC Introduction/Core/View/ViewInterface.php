@@ -3,6 +3,6 @@ namespace Core\View;
  
 interface ViewInterface
 {
-	public function render();
+	public function render($model = null);
 }
  ?>
