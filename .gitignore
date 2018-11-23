@@ -1,5 +1,7 @@
 # Cache and logs (Symfony2)
 */.idea
+*/vendor
+*/var
 /app/cache/*
 /app/logs/*
 !app/cache/.gitkeep
