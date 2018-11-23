@@ -160,7 +160,7 @@ class User implements UserInterface
      * and populated in any number of different ways when the user object
      * is created.
      *
-     * @return (Role|string)[] The user roles
+     * @return array (Role|string)[] The user roles
      */
     public function getRoles()
     {
@@ -168,7 +168,7 @@ class User implements UserInterface
 
         foreach ($this->roles as $role) {
             /** @var Role $role */
-            $stringRoles[] = $role;
+            $stringRoles[] = $role->getRole();
         }
 
         return $stringRoles;
@@ -231,7 +231,7 @@ class User implements UserInterface
      */
     public function addRole(Role $role)
     {
-        $this->roles[] = $role->getRole();
+        $this->roles[] = $role;
         return $this;
     }
 
