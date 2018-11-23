@@ -42,7 +42,7 @@
 *.docx
 *.zip
 *.rar
-
+*.pdf
 # Build data
 /build/
 
