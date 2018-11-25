@@ -18,7 +18,7 @@ class ArticleController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createAction(Request $request)
+    public function createNewArticleAction(Request $request)
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);

@@ -3,12 +3,16 @@
 namespace SoftUniBlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Article
  *
  * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="SoftUniBlogBundle\Repository\ArticleRepository")
+ * @ExclusionPolicy("all")
  */
 class Article
 {
@@ -25,6 +29,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Expose
      */
     private $title;
 
@@ -32,6 +37,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Expose
      */
     private $content;
 
@@ -45,12 +51,13 @@ class Article
     /**
      * @var string
      */
-    private  $summary;
+    private $summary;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="authorId", type="integer")
+     * @ORM\Column(name="authorId", type="integer"
+     * @Expose
      */
     private $authorId;
 
@@ -58,13 +65,15 @@ class Article
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="SoftUniBlogBundle\Entity\User", inversedBy="articles")
-     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")7
+     * @Expose
      */
     private $author;
 
     /**
      * @var string
      * @ORM\Column(name="imageUrl", type="text", nullable=false)
+     * @Expose
      */
     private $imageUrl;
 
@@ -73,6 +82,7 @@ class Article
      * @ORM\Column(name="viewCount", type="integer")
      */
     private $viewCount;
+
     /**
      * Article constructor.
      */
@@ -169,7 +179,7 @@ class Article
      */
     public function getSummary()
     {
-        if(strlen($this->getContent() > 50)){
+        if (strlen($this->getContent() > 50)) {
             $this->setSummary();
         }
 
