@@ -10,14 +10,4 @@ namespace AppBundle\Repository;
  */
 class SupplierRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getAllSuppliersByType(string $type){
-        $isImporter = $type != 'local';
-
-        return $this
-            ->createQueryBuilder('supplier')
-            ->where('supplier.isImporter', ':isImporter')
-            ->setParameter('isImporter', $isImporter)
-            ->getQuery()
-            ->getResult();
-    }
 }

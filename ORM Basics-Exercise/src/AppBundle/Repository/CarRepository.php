@@ -10,13 +10,10 @@ namespace AppBundle\Repository;
  */
 class CarRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getAllCarsByMake(string $make){
-        return $this
-            ->createQueryBuilder('car')
-            ->where('car.make', ':make')
-            ->setParameter('make', $make)
-            ->orderBy('car.model', 'asc')
-            ->orderBy('car.travelledDistance', 'desc')
+    public function getAllCarBy(string $model){
+       return $this->createQueryBuilder('car')
+            ->where('car.model', ':model')
+            ->setParameter('model', $model)
             ->getQuery()
             ->getResult();
     }

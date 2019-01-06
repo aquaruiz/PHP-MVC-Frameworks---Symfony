@@ -49,18 +49,11 @@ class Part
     private $supplier;
 
     /**
-     * @var ArrayCollection|Car[]
+     * @var ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Car", mappedBy="parts")
      */
     private $cars;
-
-    /**
-     * Part constructor.
-     */
-    public function __construct()
-    {
-        $this->cars = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -145,7 +138,7 @@ class Part
     }
 
     /**
-     * @return Supplier
+     * @return mixed
      */
     public function getSupplier()
     {
@@ -153,7 +146,7 @@ class Part
     }
 
     /**
-     * @param Supplier $supplier
+     * @param mixed $supplier
      */
     public function setSupplier($supplier)
     {
@@ -161,7 +154,7 @@ class Part
     }
 
     /**
-     * @return Car[]|ArrayCollection
+     * @return ArrayCollection
      */
     public function getCars()
     {
@@ -169,10 +162,13 @@ class Part
     }
 
     /**
-     * @param Car $car
+     * @param ArrayCollection $cars
      */
-    public function addCar($car)
+    public function setCars($cars)
     {
-        $this->cars[] = $car;
+        $this->cars = $cars;
     }
+
+
 }
+

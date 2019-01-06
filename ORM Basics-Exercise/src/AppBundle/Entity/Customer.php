@@ -44,19 +44,17 @@ class Customer
     private $isYoungDriver;
 
     /**
-     * @var ArrayCollection|Sale[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sale", mappedBy="customer")
+     * @var ArrayCollection
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sale", mappedBy="customer")
      */
     private $sales;
 
-    /**
-     * Customer constructor.
-     */
     public function __construct()
     {
         $this->sales = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -141,18 +139,19 @@ class Customer
     }
 
     /**
-     * @return Sale[]|ArrayCollection
+     * @return ArrayCollection
      */
-    public function getSales()
+    public function getSales(): ArrayCollection
     {
         return $this->sales;
     }
 
     /**
-     * @param Sale $sale
+     * @param ArrayCollection $sales
      */
-    public function addSale($sale)
+    public function setSales(ArrayCollection $sales): void
     {
-        $this->sales[] = $sale;
+        $this->sales = $sales;
     }
 }
+

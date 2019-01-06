@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use Doctrine\ORM\Mapping;
 
 /**
  * CustomerRepository
@@ -11,11 +12,16 @@ namespace AppBundle\Repository;
 class CustomerRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getAllCustomers(string $order){
-        return $this->createQueryBuilder('customer')
+
+       return $this
+            ->createQueryBuilder('customer')
             ->orderBy('customer.birthDate', ':sort')
             ->setParameter('sort', $order)
-            ->orderBy('customer.isYoungDriver', 'asc')
             ->getQuery()
             ->getResult();
     }
+
+
+
+
 }

@@ -40,6 +40,7 @@ class Sale
      */
     private $customer;
 
+
     /**
      * Get id
      *
@@ -54,7 +55,6 @@ class Sale
      * Set discount
      *
      * @param float $discount
-     *
      * @return Sale
      */
     public function setDiscount($discount)
@@ -73,36 +73,5 @@ class Sale
     {
         return $this->discount;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCar()
-    {
-        return $this->car;
-    }
-
-    /**
-     * @param mixed $car
-     */
-    public function setCar($car)
-    {
-        $this->car = $car;
-    }
-
-    /**
-     * @return Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * @param Customer $customer
-     */
-    public function setCustomer($customer)
-    {
-        $this->customer = $customer;
-    }
 }
+

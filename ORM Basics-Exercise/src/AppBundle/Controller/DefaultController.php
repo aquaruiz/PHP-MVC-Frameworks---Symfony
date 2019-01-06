@@ -14,11 +14,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-//        $this->getDoctrine()->getRepository(Car::class)
-//            ->findBy(['model' => 'asc']);
 
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $this->getDoctrine()->getRepository(Car::class)
+            ->findBy(['model' => 'asc']);
+
+
+        // replace this example code with whatever you need
+        return $this->render('default/index.html.twig');
     }
 }

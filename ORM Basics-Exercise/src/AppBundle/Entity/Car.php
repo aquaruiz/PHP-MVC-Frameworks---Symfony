@@ -44,23 +44,15 @@ class Car
     private $travelledDistance;
 
     /**
-     * @var ArrayCollection|Part[]
-     * Many Cars have many Parts.
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Part", inversedBy="cars")
+     * @var ArrayCollection
+     * Many Cars have Many Parts.
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Part")
      * @ORM\JoinTable(name="cars_parts",
-     *     joinColumns={@ORM\JoinColumn(name="car_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="part_id", referencedColumnName="id")}
-     *     )
+     *      joinColumns={@ORM\JoinColumn(name="car_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="part_id", referencedColumnName="id")}
+     *      )
      */
     private $parts;
-
-    /**
-     * Car constructor.
-     */
-    public function __construct()
-    {
-        $this->parts = new ArrayCollection();
-    }
 
 
     /**
@@ -146,7 +138,7 @@ class Car
     }
 
     /**
-     * @return Part[]|ArrayCollection
+     * @return ArrayCollection
      */
     public function getParts()
     {
@@ -154,10 +146,13 @@ class Car
     }
 
     /**
-     * @param Part $part
+     * @param ArrayCollection $parts
      */
-    public function addPart($part)
+    public function setParts($parts)
     {
-        $this->parts[] = $part;
+        $this->parts = $parts;
     }
+
+
 }
+

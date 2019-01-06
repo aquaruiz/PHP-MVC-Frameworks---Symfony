@@ -38,17 +38,16 @@ class Supplier
 
     /**
      * @var ArrayCollection|Part[]
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Part", mappedBy="supplier")
      */
     private $parts;
 
-    /**
-     * Supplier constructor.
-     */
     public function __construct()
     {
         $this->parts = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -117,10 +116,13 @@ class Supplier
     }
 
     /**
-     * @param Part $part
+     * @param Part[]|ArrayCollection $parts
      */
-    public function addPart($part)
+    public function setParts($parts)
     {
-        $this->parts[] = $part;
+        $this->parts = $parts;
     }
+
+
 }
+
